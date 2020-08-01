@@ -1,5 +1,5 @@
 // @ts-ignore
-import { InferGetServerSidePropsType } from 'next'
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 // import { GetServerSideProps } from 'next'
 // import useSWR from 'swr'
 
@@ -9,20 +9,10 @@ type Data = {
 	height: string
 }[]
 
-// export const getServerSideProps: GetServerSideProps = async ({ req, res, params, query }) => {
-//
-// 	console.log('getServerSideProps')
-// 	console.log('req', Object.keys(req))
-// 	console.log('res', Object.keys(res))
-// 	console.log('params', params)
-// 	console.log('query', query)
-// 	return { props: { data: [{ name: 'xxx' }, { name: 'ttt' }] } }
-// }
 
-
-export const getServerSideProps = async ({ req }) => {
+export const getServerSideProps = async ({ req }: GetServerSidePropsContext): Promise<{ props: { data: Data } }> => {
 	console.log('getServerSideProps')
-	const protocol = req.headers['x-forwarded-proto'] || 'http';
+	const protocol = req.headers['x-forwarded-proto'] || 'http'
 	const url = `${protocol}://${req.headers.host}/api/people`
 
 	console.log({ url })
