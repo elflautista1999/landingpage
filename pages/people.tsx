@@ -1,6 +1,6 @@
 // @ts-ignore
 import { InferGetServerSidePropsType } from 'next'
-import { GetServerSideProps } from 'next'
+// import { GetServerSideProps } from 'next'
 // import useSWR from 'swr'
 
 type Data = {
