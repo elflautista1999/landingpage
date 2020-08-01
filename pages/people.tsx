@@ -6,7 +6,7 @@ import { InferGetServerSidePropsType } from 'next'
 type Data = {
 	id: string,
 	name: string,
-	height:string
+	height: string
 }[]
 
 // export const getServerSideProps: GetServerSideProps = async ({ req, res, params, query }) => {
@@ -20,10 +20,13 @@ type Data = {
 // }
 
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({ req }) => {
 	console.log('getServerSideProps')
+	const protocol = req.headers['x-forwarded-proto'] || 'http';
+	const url = `${protocol}://${req.headers.host}/api/people`
 
-	const res = await fetch('http://127.0.0.1:3000/api/people')
+	console.log({ url })
+	const res = await fetch(url)
 	const data: Data = await res.json()
 
 	return {
@@ -35,7 +38,7 @@ export const getServerSideProps = async () => {
 
 function Page({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 	// will resolve posts to type Data
-	console.log('Page',data)
+	console.log('Page', data)
 	if (data) {
 		return (
 			<ul>
