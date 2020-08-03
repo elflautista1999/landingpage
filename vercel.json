@@ -1,6 +1,5 @@
 {
-  "version": 2,
-  //  "alias": ["mydomain.com","my-alias"],
+  "version": 2, 
   "env": {
     "MY_KEY": "sEcr3t!1"
   },
