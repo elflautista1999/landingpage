@@ -36,7 +36,7 @@ export const getStaticProps = async ({   }: GetStaticPropsContext): Promise<Data
 		// Next.js will attempt to re-generate the page:
 		// - When a request comes in
 		// - At most once every second
-		unstable_revalidate: 1 // In seconds
+		unstable_revalidate: 10 // In seconds
 	}
 }
 

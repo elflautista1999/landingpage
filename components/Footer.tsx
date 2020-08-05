@@ -17,6 +17,10 @@ const Footer = () => <div className="p-4 text-xs shadow rounded bg-blue-100">
 	<Link href="/time">
 		<a>Time</a>
 	</Link>
+	<span> | </span>
+	<Link href="/env">
+		<a>Env</a>
+	</Link>
 </div>
 
 export default Footer
