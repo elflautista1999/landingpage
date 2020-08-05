@@ -1,9 +1,4 @@
-// @ts-ignore
-// import { GetServerSidePropsContext, InferGetServerSidePropsType, GetStaticProps } from 'next'
-import { GetServerSideProps, GetServerSidePropsContext, GetStaticPropsContext, InferGetServerSidePropsType } from 'next'
-import { getStaticProps } from './time'
-// import { GetServerSideProps } from 'next'
-// import useSWR from 'swr'
+import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 
 
 interface Data {
@@ -15,7 +10,7 @@ export const getServerSideProps: GetServerSideProps = async ({}: GetServerSidePr
 	console.log('getServerSideProps', Date.now())
 	let env: { [key: string]: string | undefined } = {}
 	for (let k in process.env) {
-		if (/ENV/.test(k) || k == "OVERRIDE") {
+		if (/ENV/.test(k) || k == 'OVERRIDE') {
 			env[k] = process.env[k]
 		}
 	}
@@ -32,8 +27,8 @@ function Page({ env }: { env: { [key: string]: string | undefined } }) {
 	if (env) {
 		return (
 			<div>
-				<h1>{env["OVERRIDE"]}</h1>
-				<pre>{JSON.stringify(env,null,2)}</pre>
+				<h1>{env['OVERRIDE']}</h1>
+				<pre>{JSON.stringify(env, null, 2)}</pre>
 			</div>
 		)
 	} else {
